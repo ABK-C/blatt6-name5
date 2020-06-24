@@ -7,7 +7,7 @@
 int main() {
   const int N = 10000;     // Anzahl Integrationspunkte
   const double M = 1;      // Masse des Zylindermantels
-  const double ZM_R = 1.0; // Radius der Zylindermantels
+  const double ZM_R = 2.0; // Radius der Zylindermantels
   const double ZM_L = 1.0; // Laenge des Zylindermantels
 
   Vektor a; // Punkt auf der Rotationsachse
@@ -18,20 +18,34 @@ int main() {
   std::cin >> u;
 
   std::unique_ptr<Zylindermantel> zm(new Zylindermantel(ZM_R, ZM_L));
-
-  double J = 0;     // Massentraegheitsmoment
+  std::unique_ptr<Vollzylinder> vz(new Vollzylinder(ZM_R, ZM_L));
+  
+  double J = 0; // Massentraegheitsmoment
+  double J2 = 0;     
   double m = M / N; // Masse eines Massenpunktes
   for (int i = 0; i < N; ++i) {
     Vektor x = zm->punkt();
     // Abstand Punkt x und Gerade a + t*u
     // Vektor n = ...;//Normalenvektor x-a kreuz u
-    double r = 0; //|n|/|u|
+    double r = (u.kreuz(x - a)).betrag()/u.betrag(); //|n|/|u|
     // std::cout << x << " :" << r << std::endl;
     // addiere Beitrag des Massenpunktes zum Traegheitsmoment
     J += m * r * r;
+    
   }
+
+  for (int i = 0; i < N; ++i) {
+    
+    Vektor x = vz->punkt();
+    
+    double r = (u.kreuz(x - a)).betrag()/u.betrag();
+    
+    J2 += m * r * r;
+  }
+  
   std::cout << "Massentraegheitsmoment fuer einen Zylindermantel"
             << " mit a = " << a << " und u = " << u << ": " << J << std::endl;
-            
+  std::cout << "Massentraegheitsmoment fuer einen Vollzylinder"
+            << " mit a = " << a << " und u = " << u << ": " << J2 << std::endl;
   return 0;
 }
