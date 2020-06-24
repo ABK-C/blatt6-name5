@@ -11,6 +11,6 @@ Für : a=(0,R,0)
           
 		   Mantel                    Vollzylinder
 RLM       analytisch: 	berechnet:    analytisch:    berechnet   
-111       1      	1,9844        0,5            1,49642
-112       2      	3,9688        1        	     2,99285
-211       4		7,9376        2		     5,9857
+111       2      	1,9844        1,5            1,49642
+112       4      	3,9688        3        	     2,99285
+211       8		7,9376        6		     5,9857
