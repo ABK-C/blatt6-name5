@@ -5,7 +5,6 @@
 #include "Kugel.hh"
 #include <iostream>
 #include <memory>
-#include <cmath>
 
 double traegheit(Koerper* k, Vektor a, Vektor u, double M) {
   std::cout << "berechne für " << k->name() << "\n";
