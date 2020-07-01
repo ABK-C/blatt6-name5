@@ -54,5 +54,6 @@ int main() {
             << " mit a = " << a << " und u = " << u << ": " << JV << std::endl;
   std::cout << "Massentraegheitsmoment fuer einen Kugel"
             << " mit a = " << a << " und u = " << u << ": " << JK << std::endl;
+
   return 0;
 }
